@@ -29,21 +29,24 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 20px;
 }
 
 .content-wrapper {
 	position: relative;
 	z-index: 2;
+	max-width: 100%;
 }
 
 #name-wrapper {
 	display: flex;
-	align-items: center;
+	align-items: end;
+	flex-wrap: wrap;
 	font-weight: 400;
 	letter-spacing: 0.3rem;
 	font-size: 1.5rem;
-	white-space: nowrap;
-	width: 135px;
+	white-space: normal;
+	width: 100%;
 }
 
 .full-name {
@@ -52,7 +55,7 @@ a {
 
 .domain {
 	font-size: 1rem;
-	padding-top: 8px;
+	padding-bottom: 2px;
 	opacity: 1;
 	white-space: nowrap;
 }
@@ -69,8 +72,15 @@ a {
 	opacity: 0.8;
 }
 
+.social-links {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 12px;
+}
+
 .social-link {
 	margin-right: 8px;
+	margin-bottom: 8px;
 	color: rgb(134, 131, 131);
 	font-size: 0.875rem;
 	border-radius: 4px;
@@ -80,4 +90,40 @@ a {
 
 .social-link:hover {
 	opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+	#name-wrapper {
+		font-size: 1.2rem;
+	}
+
+	.domain {
+		font-size: 0.9rem;
+	}
+
+	.bio {
+		font-size: 0.9rem;
+	}
+
+	.social-link {
+		font-size: 0.8rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#name-wrapper {
+		font-size: 1rem;
+	}
+
+	.domain {
+		font-size: 0.8rem;
+	}
+
+	.bio {
+		font-size: 0.8rem;
+	}
+
+	.social-link {
+		font-size: 0.75rem;
+	}
 }
