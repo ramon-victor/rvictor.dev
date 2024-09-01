@@ -39,7 +39,7 @@ function handleMouseLeave(elements) {
 }
 
 function handleMouseEnter(elements, widths) {
-	animate(elements.firstNameRest, { width: widths.firstNameRest, opacity: "1", marginRight: "12px" }, 800);
+	animate(elements.firstNameRest, { width: widths.firstNameRest, opacity: "1", marginRight: "8px" }, 800);
 	animate(elements.lastName, { width: widths.lastName, opacity: "1" }, 800);
     animate(elements.domain, { width: "0px", opacity: "0" }, 800);
 }

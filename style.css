@@ -13,6 +13,11 @@ body {
 	font-family: "Poppins", sans-serif;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 *,
 *:after,
 *:before {
@@ -35,10 +40,10 @@ body {
 	display: flex;
 	align-items: center;
 	font-weight: 400;
-	letter-spacing: 0.5rem;
+	letter-spacing: 0.3rem;
 	font-size: 1.5rem;
 	white-space: nowrap;
-    width: 135px;
+	width: 135px;
 }
 
 .full-name {
@@ -50,4 +55,29 @@ body {
 	padding-top: 8px;
 	opacity: 1;
 	white-space: nowrap;
+}
+
+.bio {
+	margin-top: 12px;
+	opacity: 0.6;
+	font-size: 1rem;
+	color: rgb(187, 185, 185);
+	transition: opacity 0.3s ease-in-out;
+}
+
+.bio:hover {
+	opacity: 0.8;
+}
+
+.social-link {
+	margin-right: 8px;
+	color: rgb(134, 131, 131);
+	font-size: 0.875rem;
+	border-radius: 4px;
+	transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease-in-out;
+	opacity: 0.6;
+}
+
+.social-link:hover {
+	opacity: 0.8;
 }
