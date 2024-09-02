@@ -53,11 +53,26 @@ a {
 	margin: 0;
 }
 
+.reveal-text,
+.last-name,
 .domain {
+	transition: 800ms ease-in;
+}
+
+.reveal-text {
+	width: 90px;
+}
+
+.last-name {
+	width: 98px;
+	margin-left: 8px;
+}
+
+.domain {
+	width: auto;
 	font-size: 1rem;
 	padding-bottom: 2px;
-	opacity: 1;
-	white-space: nowrap;
+	opacity: 0;
 }
 
 .bio {
@@ -97,6 +112,14 @@ a {
 		font-size: 1.2rem;
 	}
 
+	.reveal-text {
+		width: 72px;
+	}
+	
+	.last-name {
+		width: 80px;
+	}
+
 	.domain {
 		font-size: 0.9rem;
 	}
@@ -113,6 +136,14 @@ a {
 @media screen and (max-width: 480px) {
 	#name-wrapper {
 		font-size: 1rem;
+	}
+
+	.reveal-text {
+		width: 64px;
+	}
+	
+	.last-name {
+		width: 72px;
 	}
 
 	.domain {

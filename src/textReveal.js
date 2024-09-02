@@ -6,42 +6,53 @@ function initializeNameAnimation() {
 		firstNameRest: document.querySelector(".first-name-rest"),
 		lastName: document.querySelector(".last-name"),
 		revealText: document.querySelectorAll(".reveal-text"),
-        domain: document.querySelector(".domain"),
+		domain: document.querySelector(".domain"),
 	};
 
-	const widths = {
-		firstNameRest: window.getComputedStyle(elements.firstNameRest).width,
-		lastName: window.getComputedStyle(elements.lastName).width,
+	const originalElementStyles = {
+		firstNameRest: getElementStyle(elements.firstNameRest, "width"),
+		lastName: {
+			width: getElementStyle(elements.lastName, "width"),
+			marginLeft: getElementStyle(elements.lastName, "marginLeft"),
+		},
 	};
 
-	setInitialState(elements.revealText);
-	addEventListeners(elements, widths);
+	setTimeout(() => {
+		setupEventListeners(elements, originalElementStyles);
+	}, 100);
 }
 
-function setInitialState(revealText) {
-	revealText.forEach((el) => {
-		el.style.width = "0px";
-		el.style.opacity = "0";
-	});
+function setupEventListeners(elements, originalElementStyles) {
+	const eventActions = {
+		mouseleave: () => handleMouseLeave(elements, originalElementStyles),
+		mouseenter: () => handleMouseEnter(elements),
+	};
+
+	for (const [event, action] of Object.entries(eventActions)) {
+		elements.nameWrapper.addEventListener(event, action);
+	}
 }
 
-function addEventListeners(elements, widths) {
-	elements.nameWrapper.addEventListener("mouseleave", () => handleMouseLeave(elements));
-	elements.nameWrapper.addEventListener("mouseenter", () => handleMouseEnter(elements, widths));
+function handleMouseLeave(elements, originalElementStyles) {
+	animate(elements.firstNameRest, { width: originalElementStyles.firstNameRest, opacity: "1" }, 800);
+	animate(
+		elements.lastName,
+		{
+			width: originalElementStyles.lastName.width,
+			opacity: "1",
+			marginLeft: originalElementStyles.lastName.marginLeft,
+		},
+		800
+	);
+	animate(elements.domain, { width: "0px", opacity: "0" }, 800);
 }
 
-function handleMouseLeave(elements) {
+function handleMouseEnter(elements) {
 	elements.revealText.forEach((el) => {
 		animate(el, { width: "0px", opacity: "0" }, 800);
 	});
-	animate(elements.firstNameRest, { width: "0px", opacity: "0", marginRight: "0px" }, 800);
-	animate(elements.domain, { width: "auto", opacity: "1" }, 800);
-}
-
-function handleMouseEnter(elements, widths) {
-	animate(elements.firstNameRest, { width: widths.firstNameRest, opacity: "1", marginRight: "8px" }, 800);
-	animate(elements.lastName, { width: widths.lastName, opacity: "1" }, 800);
-    animate(elements.domain, { width: "0px", opacity: "0" }, 800);
+	animate(elements.lastName, { marginLeft: "0" }, 800);
+	animate(elements.domain, { opacity: "1" }, 800);
 }
 
 function animate(element, properties, duration) {
@@ -52,4 +63,8 @@ function animate(element, properties, duration) {
 		});
 		setTimeout(resolve, duration);
 	});
+}
+
+function getElementStyle(element, property) {
+	return window.getComputedStyle(element)[property];
 }
